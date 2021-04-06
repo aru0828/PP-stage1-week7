@@ -1,13 +1,19 @@
 import mysql.connector
+import os
+#python 環境變數套件
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify;
 
+#呼叫套件 預設載入.env
+load_dotenv()
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="122090513",
+    #呼叫環境變數 SQL_PD為自訂
+    password=os.getenv("SQL_PD"),
     database="website",
     charset = "utf8"
 )
