@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block message %} 歡迎光臨，這是會員頁 {% endblock %}
+
+{%　block main %}
+<div class="memberMain">
+    <h3>{{name}}．歡迎登入系統</h3>
+    <a href="/signout">登出系統</a>
+
+    <h3>查詢會員姓名</h3>
+    <input type="text" id="searchInput">
+    <button onclick="search()">查詢</button>
+    <div class="resultDOM"></div>
+</div>
+
+{% endblock %}
+
+{% block style %}
+<style>
+    .memberMain {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+{% endblock%}
+
+{% block script %}
+<script>
+    function search() {
+        let searchValue = document.getElementById("searchInput").value
+        let url = `http://127.0.0.1:3000/api/users?username=${searchValue}`
+        let resultDOM = document.querySelector('.resultDOM')
+
+        fetch(url, { method: 'get' })
+            .then(response => {
+                response.json().then(data => {
+                    console.log(data.data)
+                    let h3DOM = document.createElement('p')
+                    let textNode;
+
+            
+                    while (resultDOM.firstChild) {
+                        resultDOM.removeChild(resultDOM.firstChild);
+                    }
+                    if (data.data === "null") {
+                        textNode = document.createTextNode("查無資料")
+                    } else{
+                        textNode = document.createTextNode(` ${data.data.name} (${data.data.username}) `);
+                    }
+                    
+                    h3DOM.appendChild(textNode);
+                    resultDOM.appendChild(h3DOM);
+
+                })
+            })
+    }
+</script>
+{% endblock %}

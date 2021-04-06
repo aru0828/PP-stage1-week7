@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block message%} 歡迎光臨，請註冊登入系統 {% endblock %}
+
+{% block main %}
+<div class="indexMain">
+    <form action="/signup" class="signup" method="POST">
+        <h3>註冊帳號</h3>
+        <div class="inputGroup">
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name">
+        </div>
+
+        <div class="inputGroup">
+            <label for="username">帳號</label>
+            <input type="text" id="username" name="username">
+        </div>
+
+        <div class="inputGroup">
+            <label for="password">密碼</label>
+            <input type="text" id="password" name="password">
+        </div>
+        <button type="submit" class="submitBtn">註冊</button>
+    </form>
+    <br>
+    <hr>
+
+    <form action="/signin" class="signin" method="POST">
+        <h3>登入系統</h3>
+        <div class="inputGroup">
+            <label for="signinUsername">帳號</label>
+            <input type="text" id="signinUsername" name="signinUsername">
+        </div>
+
+        <div class="inputGroup">
+            <label for="signinPassword">密碼</label>
+            <input type="text" id="signinPassword" name="signinPassword">
+        </div>
+        <button type="submit" class="submitBtn">登入</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .indexMain {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .indexMain h3 {
+        text-align: center;
+    }
+
+    .inputGroup {
+        margin-bottom: 8px;
+    }
+
+    .submitBtn {
+        display: block;
+        margin: 15px auto 0 auto;
+    }
+</style>
+
+{% endblock %}

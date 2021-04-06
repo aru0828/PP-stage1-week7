@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block message %} 失敗頁面 {% endblock %}
+
+{% block main %} 
+<div class="errorMain">
+    <h2>{{message}}</h2> 
+    <a href="/">回到首頁</a>
+</div>
+ 
+{% endblock %}
+{% block style %}
+<style>
+    .errorMain{
+        width: 50%;
+        margin:0 auto;
+        text-align: center;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="messageBar">
+        <h1>{% block message %} {% endblock %}</h1>
+        
+    </div>
+    {% block main %} {% endblock%}
+    
+    
+
+</body>
+
+
+</html>
+<style>
+    .messageBar {
+        height: 150px;
+        background: #00758F;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .messageBar h1{
+        color:white;
+    }
+
+</style>
+
+{%　block style %}
+
+{% endblock%}
+
+
+
+{%　block script %}
+
+{% endblock%}
